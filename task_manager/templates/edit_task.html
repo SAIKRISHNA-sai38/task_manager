@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Task
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Edit Task</h2>
+
+    <form method="POST">
+
+        <label>Task Title</label>
+
+        <input type="text"
+               name="title"
+               class="form-control"
+               value="{{ task.title }}">
+
+        <br>
+
+        <label>Priority</label>
+
+        <select name="priority" class="form-control">
+
+            <option value="High">High</option>
+
+            <option value="Medium">Medium</option>
+
+            <option value="Low">Low</option>
+
+        </select>
+
+        <br>
+
+        <button type="submit"
+                class="btn btn-primary">
+
+            Update Task
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

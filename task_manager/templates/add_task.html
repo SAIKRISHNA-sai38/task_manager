@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Task Page
+{% endblock %}
+{% block content %}
+<h2>Add Task</h2>
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-AddTask" style="color:white">
+            {{ form.hidden_tag() }}
+
+            <h1 class="h3 mb-3 font-weight-normal">
+                Type your Task
+            </h1>
+            <br>
+
+
+
+            <input type="text"
+                name="title"
+                placeholder="Enter task"
+                class="form-control">
+
+            <br>
+
+            <input type="data"
+                   name="deadline"
+                   class="form-control">
+            <br>
+
+            <select name="priority" class="form-control">
+
+                <option value="High">High</option>
+
+                <option value="Medium">Medium</option>
+
+                <option value="Low">Low</option>
+
+             </select>
+
+             <br>
+            <select name="category" class="form-control">
+
+                <option value="Study">Study</option>
+
+                <option value="Work">Work</option>
+
+                <option value="Personal">Personal</option>
+
+                <option value="Health">Health</option>
+
+            </select>
+
+            <br>
+
+            <input type="date" name="deadline" class="form-control">
+
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Your Tasks</h2>
+    <form method="GET" action="{{ url_for('home_page') }}">
+
+    <input type="text"
+           name="search"
+           placeholder="Search tasks"
+           class="form-control">
+
+    <br>
+
+    <button type="submit"
+            class="btn btn-primary">
+
+        Search
+
+    </button>
+
+    </form>
+
+    <br>
+    <br>
+    {% if tasks %}
+
+    <ul>
+    {% for task in tasks %}
+    <li>
+
+        {{ task.title }}
+        .Deadline: {{ task.deadline }}
+        .Category: {{ task.category }}
+
+        {% if task.priority == 'High' %}
+            <span class="badge badge-danger">High</span>
+
+        {% elif task.priority == 'Medium' %}
+            <span class="badge badge-warning">Medium</span>
+
+        {% else %}
+            <span class="badge badge-success">Low</span>
+        {% endif %}
+
+        <a href="{{ url_for('complete_task', task_id=task.id) }}"
+           class="btn btn-success btn-sm">
+           Complete
+        </a>
+
+        <a href="{{ url_for('delete_task', task_id=task.id) }}"
+           class="btn btn-danger btn-sm">
+           Delete
+        </a>
+
+        <a href="{{ url_for('edit_task',task_id=task.id) }}" class="btn btn-info btn-sm">
+            Edit
+        </a>
+
+    </li>
+
+    <br>
+
+    {% endfor %}
+</ul>
+
+<h3>Completed Tasks</h3>
+
+<ul>
+    {% for task in completed_tasks %}
+        <li>{{ task.title }}</li>
+    {% endfor %}
+</ul>
+
+    {% else %}
+    <h3>No Tasks Added Yet</h3>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}
