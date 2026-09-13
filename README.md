@@ -18,6 +18,7 @@ A simple task management web application built using Flask, HTML, CSS, and SQLit
 - SQLite
 - HTML
 - CSS
+- JavaScript
 
 ## How to Run
 
